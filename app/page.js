@@ -143,7 +143,7 @@ export default function StudentDashboard() {
   return (
     <div className='flex h-screen bg-gray-100'>
       {/*sidebar */}
-      <aside className='w-64 bg-gradient-to-b from-indigo-800 to-indigo-700 text-white flex  flex-col'>
+      <aside className='w-64 bg-gradient-to-b from-indigo-700 to-indigo-700 text-white flex  flex-col'>
         {/*Logo */}
         <div className='px-7 pt-7 pb-6 flex items-center gap-3'>
           <div className='w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center font-bold text-2xl'>
@@ -194,13 +194,13 @@ export default function StudentDashboard() {
             <table className='w-full'>
               <thead>
                 <tr className='bg-gray-50 border-b'>
-                  <th className='px-6 py-4 text-left text-sm font-semibold text-purple-600'>Name</th>
-                  <th className='px-6 py-4 text-left text-sm font-semibold text-purple-600'>ID</th>
-                  <th className='px-6 py-4 text-left text-sm font-semibold text-purple-600'>Date</th>
-                  <th className='px-6 py-4 text-left text-sm font-semibold text-purple-600'>Parent Name</th>
-                  <th className='px-6 py-4 text-left text-sm font-semibold text-purple-600'>City</th>
-                  <th className='px-6 py-4 text-left text-sm font-semibold text-purple-600'>Contact</th>
-                  <th className='px-6 py-4 text-left text-sm font-semibold text-purple-600'>Grade</th>
+                  <th className='px-6 py-4 text-left text-xs font-semibold text-purple-600'>Name</th>
+                  <th className='px-6 py-4 text-left text-xs font-semibold text-purple-600'>ID</th>
+                  <th className='px-6 py-4 text-left text-xs font-semibold text-purple-600'>Date</th>
+                  <th className='px-6 py-4 text-left text-xs font-semibold text-purple-600'>Parent Name</th>
+                  <th className='px-6 py-4 text-left text-xs font-semibold text-purple-600'>City</th>
+                  <th className='px-6 py-4 text-left text-xs font-semibold text-purple-600'>Contact</th>
+                  <th className='px-6 py-4 text-left text-xs font-semibold text-purple-600'>Grade</th>
                 </tr>
               </thead>
               <tbody>
@@ -211,19 +211,19 @@ export default function StudentDashboard() {
                         <div className='w-10 h-10 bg-indigo-200 rounded-full flex items-center justify-center text-indigo-700 font-semibold'>
                           {student.name.charAt(0)}
                         </div>
-                        <span className='font-medium text-gray-800'>{student.name}</span>
+                        <span className='font-bold text-lg text-purple-900'>{student.name}</span>
                       </div>
                     </td>
-                    <td className='px-6 py-4 text-indigo-600 font-medium'>{student.studentId}</td>
-                    <td className='px-6 py-4 text-gray-600'>{student.date}</td>
-                    <td className='px-6 py-4 text-gray-600'>{student.parentName}</td>
-                    <td className='px-6 py-4 text-gray-600'>{student.city}</td>
+                    <td className='px-6 py-4 text-base font-medium text-purple-700'>{student.studentId}</td>
+                    <td className='px-6 py-4 text-xs font-medium text-gray-400'>{student.date}</td>
+                    <td className='px-6 py-4 text-xs  text-purple-900'>{student.parentName}</td>
+                    <td className='px-6 py-4 text-xs text-purple-900'>{student.city}</td>
                     <td className='px-6 py-4'>
                       <div className='flex gap-2'>
-                        <button className='w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center hover:bg-indigo-200 transition-colors'>
+                        <button className='w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center hover:bg-indigo-200 transition-colors'>
                           <Phone size={16} className='text-indigo-600'/>
                         </button>
-                        <button className='w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center hover:bg-indigo-200 transition-colors'>
+                        <button className='w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center hover:bg-indigo-200 transition-colors'>
                           <Mail size={16} className='text-indigo-600'/>
                         </button>
                       </div>
@@ -239,20 +239,20 @@ export default function StudentDashboard() {
             </table>
 
             {/*Pagination */}
-            <div className='px-6 py-4 flex items-center justify-center gap-2 border-t'>
-              <button className='w-8 h-8 flex items-center justify-center text-gray-400 hover:bg-gray-100 rounded-lg'>
+            <div className='px-6 py-4 flex items-center justify-end gap-2 border-t'>
+              <button className='w-8 h-8 flex items-center justify-center text-gray-400 hover:bg-gray-100 rounded-full'>
                 {'<'}
               </button>
-              <button className='w-8 h-8 flex items-center justify-center bg-indigo-600 text-white rounded-lg font-medium'>
+              <button className='w-8 h-8 flex items-center justify-center bg-indigo-600 text-white rounded-full font-medium'>
                 1
               </button>
-              <button className='w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100 rounded-lg'>
+              <button className='w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100 rounded-full'>
                 2
               </button>
-              <button className='w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100 rounded-lg'>
+              <button className='w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100 rounded-full'>
                 3
               </button>
-              <button className='w-8 h-8 flex items-center justify-center text-gray-400 hover:bg-gray-100 rounded-lg'>
+              <button className='w-8 h-8 flex items-center justify-center text-gray-400 hover:bg-gray-100 rounded-full'>
                 {'>'}
               </button>
             </div>
