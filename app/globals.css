@@ -15,12 +15,12 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #F4F6FD;
-    --foreground: #F4F6FD;;
+    --foreground: #F4F6FD;
   }
 }
 
 body {
-  background:#F4F6FD;
+  background-color: #F5F3FF; /* ou teste #F6F4FF */
   color: var(--foreground);
   font-family: Poppins, sans-serif;
 }

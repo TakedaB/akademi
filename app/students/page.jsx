@@ -76,25 +76,24 @@ export default function StudentDashboard() {
   ];
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Main Content */}
-      <main className="bg-indigo-50 flex-1 overflow-auto">
-        {/* Header */}
-        <header className="bg-indigo-50 border-b px-8 py-6">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-gray-800">Students</h1>
+    <div className="flex h-screen bg-[#F5F3FF]">
+      <main className=" flex-1 overflow-auto bg-[#F3F4FF]">
+
+        <header className="bg-[#F5F3FF] px-8 py-6 flex items-center justify-between">
+            <h1 className="text-3xl font-bold text-[#2E236C]">Students</h1>
 
             <div className="flex items-center gap-4">
-              {/* Sort dropdown */}
-              <div className="relative">
-                <button className="flex items-center gap-2 px-5 py-2.5 border border-indigo-900 rounded-full hover:bg-gray-50">
-                  <span className="text-gray-700">{selectedSort}</span>
-                  <ChevronDown size={16} className="text-gray-500" />
+                <button className='flex items-center gap-2 px-5 py-2.5 border border-[#6E4AE9] text-[#6E4AE9] rounded-full font-medium text-sm bg-white transition-colors'>
+                  <span>{selectedSort}</span>
+                  <ChevronDown size={16} />
+                </button>
+                
+                <button className='flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6E4AE9] text-white font-medium text-sm shadow-md hover:bg-[#5A3FC0] transition-all'>
+                  <span className='text-base'>+</span>
+                  <span>New Student</span>
                 </button>
               </div>
-            </div>
-          </div>
-        </header>
+          </header>
 
         {/* Table */}
         <div className="p-8">

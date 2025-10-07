@@ -15,7 +15,7 @@ const poppins = Poppins ({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} flex min-h-screen bg-[#F4F6FD]`}
+      <body className={`${poppins.className} flex min-h-screen bg-[#F5F3FF]`}
       >
         {/* Sidebar fixa à esquerda */}
         <Sidebar />
