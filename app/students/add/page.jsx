@@ -40,8 +40,8 @@ export default function AddStudentPage() {
   };
 
   return (
-    <div className="p-8 bg-[#F5F6FB] min-h-screen">
-      <div className="w-full px-8">
+    <div className="p-3 bg-[#F5F6FB] min-h-screen">
+      <div className="w-full px-3">
         <h1 className="text-2xl font-bold mb-8 text-[#303972]">Add New Student</h1>
 
         <form onSubmit={handleSubmit} className="space-y-8 w-full">
@@ -60,7 +60,7 @@ export default function AddStudentPage() {
                   value={student.firstName}
                   onChange={handleStudentChange}
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
-                  placeholder="Samantha"
+                  placeholder="Gideon"
                   required
                 />
               </div>
@@ -72,7 +72,7 @@ export default function AddStudentPage() {
                   value={student.lastName}
                   onChange={handleStudentChange}
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
-                  placeholder="William"
+                  placeholder="Williams"
                   required
                 />
               </div>
@@ -106,7 +106,7 @@ export default function AddStudentPage() {
                   value={student.parentName}
                   onChange={handleStudentChange}
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
-                  placeholder="Mana William"
+                  placeholder="Ranni Williams"
                   required
                 />
               </div>
@@ -119,7 +119,7 @@ export default function AddStudentPage() {
                   onChange={handleStudentChange}
                   type="email"
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
-                  placeholder="william@mail.com"
+                  placeholder="williams@mail.com"
                   required
                 />
               </div>
@@ -145,7 +145,7 @@ export default function AddStudentPage() {
                   onChange={handleStudentChange}
                   rows={4}
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
-                  placeholder="Lorem ipsum dolor sit amet..."
+                  placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                   required
                 />
                 <p className="text-xs text-gray-400 text-right mt-1">0/2000</p>
@@ -169,7 +169,7 @@ export default function AddStudentPage() {
                   value={parent.firstName}
                   onChange={handleParentChange}
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
-                  placeholder="Mana"
+                  placeholder="Ranni"
                 />
               </div>
 
@@ -180,7 +180,7 @@ export default function AddStudentPage() {
                   value={parent.lastName}
                   onChange={handleParentChange}
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
-                  placeholder="William"
+                  placeholder="Williams"
                 />
               </div>
 
@@ -192,7 +192,7 @@ export default function AddStudentPage() {
                   value={parent.email}
                   onChange={handleParentChange}
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
-                  placeholder="mana@mail.com"
+                  placeholder="williams@mail.com"
                 />
               </div>
 
@@ -217,7 +217,7 @@ export default function AddStudentPage() {
                   onChange={handleParentChange}
                   rows={4}
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
-                  placeholder="Parent address..."
+                  placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '
                 />
                 <p className="text-xs text-gray-400 text-right mt-1">0/2000</p>
               </div>
