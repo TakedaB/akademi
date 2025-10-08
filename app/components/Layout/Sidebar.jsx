@@ -18,7 +18,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="bg-[#4F46E5] text-white w-60 min-h-screen p-6">
+    <aside className="bg-[#4D44B5] text-[#C1BBEB] w-60 min-h-screen p-6">
       {/* Logo */}
       <Logo />
 
@@ -33,8 +33,8 @@ export default function Sidebar() {
               <div
                 className={`group flex items-center gap-3 p-3 rounded-lg transition-all ${
                   isActive
-                    ? "bg-white text-[#4F46E5] font-semibold"
-                    : "hover:bg-[#635DF7]"
+                    ? "bg-white text-[#4D44B5] font-semibold"
+                    : "hover:bg[#C1BBEB]"
                 }`}
               >
                 <Icon 

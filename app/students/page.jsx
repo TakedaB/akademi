@@ -79,8 +79,8 @@ export default function StudentDashboard() {
     <div className="flex h-screen bg-[#F5F3FF]">
       <main className=" flex-1 overflow-auto bg-[#F3F4FF]">
 
-        <header className="bg-[#F5F3FF] px-8 py-6 flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-[#2E236C]">Students</h1>
+        <header className="bg-[#F3F4FF] px-8 py-6 flex items-center justify-between">
+            <h1 className="text-3xl font-bold text-[#303972]">Students</h1>
 
             <div className="flex items-center gap-4">
                 <button className='flex items-center gap-2 px-5 py-2.5 border border-[#6E4AE9] text-[#6E4AE9] rounded-full font-medium text-sm bg-white transition-colors'>
@@ -101,13 +101,13 @@ export default function StudentDashboard() {
             <table className="w-full">
               <thead>
                 <tr className="bg-white-50 border-b">
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-purple-600">Name</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-purple-600">ID</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-purple-600">Date</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-purple-600">Parent Name</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-purple-600">City</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-purple-600">Contact</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-purple-600">Grade</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-[#303972]">Name</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#303972]">ID</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-[#303972]">Date</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-[#303972]">Parent Name</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-[#303972]">City</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-[#303972]">Contact</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-[#303972]">Grade</th>
                 </tr>
               </thead>
               <tbody>
@@ -118,20 +118,20 @@ export default function StudentDashboard() {
                         <div className="w-10 h-10 bg-indigo-200 rounded-full flex items-center justify-center text-indigo-700 font-semibold">
                           {student.name.charAt(0)}
                         </div>
-                        <span className="font-bold text-lg text-purple-900">{student.name}</span>
+                        <span className="font-bold text-lg text-[#303972]">{student.name}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-base font-medium text-purple-700">{student.studentId}</td>
-                    <td className="px-6 py-4 text-xs font-medium text-gray-400">{student.date}</td>
-                    <td className="px-6 py-4 text-xs text-purple-900">{student.parentName}</td>
-                    <td className="px-6 py-4 text-xs text-purple-900">{student.city}</td>
+                    <td className="px-6 py-4 text-sm font-medium text-[#4D44B5]">{student.studentId}</td>
+                    <td className="px-6 py-4 text-xs font-medium text-[#A098AE]">{student.date}</td>
+                    <td className="px-6 py-4 text-xs text-[#303972]">{student.parentName}</td>
+                    <td className="px-6 py-4 text-xs text-[#303972]">{student.city}</td>
                     <td className="px-6 py-4">
                       <div className="flex gap-2">
                         <button className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center hover:bg-indigo-200 transition-colors">
-                          <Phone size={16} className="text-indigo-600" />
+                          <Phone size={16} className="text-[#4D44B5]" />
                         </button>
                         <button className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center hover:bg-indigo-200 transition-colors">
-                          <Mail size={16} className="text-indigo-600" />
+                          <Mail size={16} className="text-[#4D44B5]" />
                         </button>
                       </div>
                     </td>
