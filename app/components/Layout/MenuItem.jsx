@@ -1,5 +1,3 @@
-
-
 function MenuItem({ icon, label, active = false }) {
   return (
     <button

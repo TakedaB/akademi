@@ -6,74 +6,20 @@ import { ChevronDown, Phone, Mail } from 'lucide-react';
 export default function StudentDashboard() {
   const [selectedSort, setSelectedSort] = useState('Newest');
 
-  const students = [
-    {
-      id: 1,
-      name: 'Gideon Williams',
-      studentId: '#123456789',
-      date: 'March 25, 2001',
-      parentName: 'Ranni Williams',
-      city: 'Jakarta',
-      contact: { phone: true, email: true },
-      grade: 'VII A',
-      gradeColor: 'bg-orange-500',
-    },
-    {
-      id: 2,
-      name: 'Miquella Soap',
-      studentId: '#123456789',
-      date: 'March 25, 2001',
-      parentName: 'Marika Soap',
-      city: 'Jakarta',
-      contact: { phone: true, email: true },
-      grade: 'VII B',
-      gradeColor: 'bg-yellow-500',
-    },
-    {
-      id: 3,
-      name: 'Malenia Hope',
-      studentId: '#123456789',
-      date: 'March 25, 2001',
-      parentName: 'Radagon Hope',
-      city: 'Jakarta',
-      contact: { phone: true, email: true },
-      grade: 'VII C',
-      gradeColor: 'bg-purple-600',
-    },
-    {
-      id: 4,
-      name: 'Renalla Nico',
-      studentId: '#123456789',
-      date: 'March 25, 2001',
-      parentName: 'Rellana Nico',
-      city: 'Jakarta',
-      contact: { phone: true, email: true },
-      grade: 'VII A',
-      gradeColor: 'bg-yellow-500',
-    },
-    {
-      id: 5,
-      name: 'Hyetta Adja',
-      studentId: '#123456789',
-      date: 'March 25, 2001',
-      parentName: 'Lyetta Adja',
-      city: 'Jakarta',
-      contact: { phone: true, email: true },
-      grade: 'VII A',
-      gradeColor: 'bg-orange-500',
-    },
-    {
-      id: 6,
-      name: 'Erina Ahmad',
-      studentId: '#123456789',
-      date: 'March 25, 2001',
-      parentName: 'Sebastian Ahmad',
-      city: 'Jakarta',
-      contact: { phone: true, email: true },
-      grade: 'VII A',
-      gradeColor: 'bg-yellow-500',
-    },
+  const studentsData = [
+    { id: '#123456788', name: 'Gideon Williams', date: '2020-03-23', parentName: 'Ranni Williams', city: 'Jakarta', contact: { phone: true, email: true }, grade: 'VII A', gradeColor: 'bg-orange-500' },
+    { id: '#123456784', name: 'Miquella Soap', date: '2019-04-25', parentName: 'Marika Soap', city: 'Jakarta', contact: { phone: true, email: true }, grade: 'VII B', gradeColor: 'bg-yellow-500' },
+    { id: '#123456778', name: 'Malenia Hope', date: '2023-01-15', parentName: 'Radagon Hope', city: 'Jakarta', contact: { phone: true, email: true }, grade: 'VII C', gradeColor: 'bg-purple-600' },
+    { id: '#123456769', name: 'Renalla Nico', date: '2022-07-10', parentName: 'Rellana Nico', city: 'Jakarta', contact: { phone: true, email: true }, grade: 'VII A', gradeColor: 'bg-yellow-500' },
+    { id: '#123456779', name: 'Hyetta Adja', date: '2017-02-03', parentName: 'Lyetta Adja', city: 'Jakarta', contact: { phone: true, email: true }, grade: 'VII A', gradeColor: 'bg-orange-500' },
+    { id: '#123456729', name: 'Erina Ahmad', date: '2019-05-12', parentName: 'Sebastian Ahmad', city: 'Jakarta', contact: { phone: true, email: true }, grade: 'VII A', gradeColor: 'bg-yellow-500' },
   ];
+
+  const sortedStudents = [...studentsData].sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return selectedSort === 'Newest' ? dateB - dateA : dateA - dateB;
+  });
 
   return (
     <div className="flex h-screen bg-[#F5F3FF]">
@@ -83,11 +29,18 @@ export default function StudentDashboard() {
             <h1 className="text-3xl font-bold text-[#303972]">Students</h1>
 
             <div className="flex items-center gap-4">
-                <button className='flex items-center gap-2 px-5 py-2.5 border border-[#6E4AE9] text-[#6E4AE9] rounded-full font-medium text-sm bg-white transition-colors'>
-                  <span>{selectedSort}</span>
-                  <ChevronDown size={16} />
+                <div className="relative">
+                  <button
+                    onClick={() =>
+                      setSelectedSort((prev) => (prev === 'Newest' ? 'Oldest' : 'Newest'))
+                    }
+                    className="flex items-center gap-2 px-5 py-2.5 border border-[#6E4AE9] text-[#6E4AE9] rounded-full font-medium text-sm bg-white hover:bg-[#F0EBFF] transition-colors"
+                  >
+                    <span>{selectedSort}</span>
+                    <ChevronDown size={16} />
                 </button>
-                
+             </div>
+
                 <button className='flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6E4AE9] text-white font-medium text-sm shadow-md hover:bg-[#5A3FC0] transition-all'>
                   <span className='text-base'>+</span>
                   <span>New Student</span>
@@ -110,8 +63,9 @@ export default function StudentDashboard() {
                   <th className="px-6 py-4 text-left text-sm font-semibold text-[#303972]">Grade</th>
                 </tr>
               </thead>
+              
               <tbody>
-                {students.map((student) => (
+                {sortedStudents.map((student) => (
                   <tr key={student.id} className="border-b hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
@@ -121,7 +75,12 @@ export default function StudentDashboard() {
                         <span className="font-bold text-lg text-[#303972]">{student.name}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm font-medium text-[#4D44B5]">{student.studentId}</td>
+
+                    {/* ID */}
+                    <td className="px-6 py-4 text-sm font-medium text-[#4D44B5]">
+                      {student.id}
+                    </td>
+
                     <td className="px-6 py-4 text-xs font-medium text-[#A098AE]">{student.date}</td>
                     <td className="px-6 py-4 text-xs text-[#303972]">{student.parentName}</td>
                     <td className="px-6 py-4 text-xs text-[#303972]">{student.city}</td>
@@ -136,13 +95,16 @@ export default function StudentDashboard() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`px-4 py-1.5 ${student.gradeColor} text-white rounded-full text-sm font-medium inline-block`}>
+                      <span
+                        className={`px-4 py-1.5 ${student.gradeColor} text-white rounded-full text-sm font-medium inline-block`}
+                      >
                         {student.grade}
                       </span>
                     </td>
                   </tr>
                 ))}
-              </tbody>
+</tbody>
+
             </table>
 
             {/* Pagination */}
