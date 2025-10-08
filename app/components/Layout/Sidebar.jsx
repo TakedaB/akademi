@@ -8,7 +8,7 @@ import {DashboardIcon, StudentsIcon, AddStudentIcon,TeachersIcon,FinanceIcon,Use
 const menuItems = [
   { name: "Dashboard", icon: DashboardIcon, path: "/dashboard" },
   { name: "Students", icon: StudentsIcon, path: "/students" },
-  { name: "Add Student", icon: AddStudentIcon, path: "/new-students" },
+  { name: "Add Student", icon: AddStudentIcon, path: "/students/add" },
   { name: "Teachers", icon: TeachersIcon, path: "/teachers" },
   { name: "Finance", icon: FinanceIcon, path: "/finance" },
   { name: "User", icon: UserIcon, path: "/user" },

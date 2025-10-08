@@ -34,7 +34,7 @@ export default function StudentDashboard() {
       name: 'Malenia Hope',
       studentId: '#123456789',
       date: 'March 25, 2001',
-      parentName: 'Radagon Soap',
+      parentName: 'Radagon Hope',
       city: 'Jakarta',
       contact: { phone: true, email: true },
       grade: 'VII C',
