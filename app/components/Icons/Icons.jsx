@@ -1,10 +1,6 @@
 // app/components/Icons/Icons.jsx
 import React from "react";
 
-/**
- * Cada componente aceita props para conseguir usar `className` (p.ex. w-5 h-5)
- * e propagar atributos no <svg {...props} />
- */
 export const DashboardIcon = (props) => (
   <svg
     viewBox="0 0 40 40"
