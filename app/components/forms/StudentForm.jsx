@@ -1,10 +1,38 @@
 import React from 'react'
 
 export default function StudentForm({ student, onChange}) {
-    const handleInputChange = (e) => {
-      const { name, value} = e.target;
-      onChange(name, value);
-    };
+  const validateTextOnly = (value) => {
+    return value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+  };
+  
+  const validadePhoneOnly = (value) => {
+    return value.replace(/[^0-9+\-() ]/g, '');
+  };  
+  
+  const handleInputChange = (e) => {
+    const { name, value} = e.target;
+    onChange(name, value);
+  };
+
+  const handleInputChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let sanitizedValue = value;
+
+    switch(name) {
+      case 'firstName':
+      case 'lastName':
+      case 'parentName':
+        sanitizedValue = validateTextOnly(value);
+        break;
+      case 'phone':
+        sanitizedValue = validadePhoneOnly(value);
+        break;
+      default:
+        sanitizedValue = value
+    }
+
+    onChange(name, sanitizedValue);
+  };
 
   return(
           <div className="bg-white rounded-xl shadow p-0 border border-gray-200 overflow-hidden">
@@ -19,7 +47,7 @@ export default function StudentForm({ student, onChange}) {
                 <input
                   name="firstName"
                   value={student.firstName || ''}
-                  onChange={handleInputChange}
+                  onChange={handleInputChangeWithValidation}
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
                   placeholder="Gideon"
                   required
@@ -31,7 +59,7 @@ export default function StudentForm({ student, onChange}) {
                 <input
                   name="lastName"
                   value={student.lastName || ''}
-                  onChange={handleInputChange}
+                  onChange={handleInputChangeWithValidation}
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
                   placeholder="Williams"
                   required
@@ -42,6 +70,7 @@ export default function StudentForm({ student, onChange}) {
                 <label className="block text-sm font-medium text-[#303972] mb-2">Date &amp; Place of Birth *</label>
                 <div className="grid grid-cols-3 gap-3">
                   <input
+                    type="date"
                     name="dateOfBirth"
                     value={student.dateOfBirth || ''}
                     onChange={handleInputChange}
@@ -65,7 +94,7 @@ export default function StudentForm({ student, onChange}) {
                 <input
                   name="parentName"
                   value={student.parentName || ''}
-                  onChange={handleInputChange}
+                  onChange={handleInputChangeWithValidation}
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
                   placeholder="Ranni Williams"
                   required
@@ -90,7 +119,7 @@ export default function StudentForm({ student, onChange}) {
                 <input
                   name="phone"
                   value={student.phone || ''}
-                  onChange={handleInputChange}
+                  onChange={handleInputChangeWithValidation}
                   type="tel"
                   className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
                   placeholder="+1234567890"

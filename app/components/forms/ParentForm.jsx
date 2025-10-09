@@ -5,9 +5,43 @@ import PaymentOptions from "../forms/PaymentOptions";
 export default function ParentForm({ parent, handleParentChange }) {
   const [payment, setPayment] = useState(parent.payment || "cash");
 
-  const handlePaymentChange = (value) => {
+  const validateTextOnly = (value) => {
+    return value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+  };
+  
+  const validadePhoneOnly = (value) => {
+    return value.replace(/[^0-9+\-() ]/g, '');
+  };
+
+  const handlePaymentChangeInternal = (value) => {
     setPayment(value);
-    handleParentChange({ target: { name: "payment", value } });
+    handleParentChange( { target: { name: 'payment', value }});
+  };
+  
+  const handleInputChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let sanitizedValue = value;
+
+    switch(name) {
+      case 'firstName':
+      case 'lastName':
+        sanitizedValue = validateTextOnly(value);
+        break;
+      case 'phone':
+        sanitizedValue = validadePhoneOnly(value);
+        break;
+      default:
+        sanitizedValue = value
+    }
+
+    const syntheticEvent = {
+      target: {
+        name: name,
+        value: sanitizedValue
+      }
+    };
+
+    handleParentChange(syntheticEvent);
   };
 
   return (
@@ -27,7 +61,7 @@ export default function ParentForm({ parent, handleParentChange }) {
           <input
             name="firstName"
             value={parent.firstName || ''}
-            onChange={handleParentChange}
+            onChange={handleInputChangeWithValidation}
             placeholder="Ranni"
             className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
             required
@@ -42,7 +76,7 @@ export default function ParentForm({ parent, handleParentChange }) {
           <input
             name="lastName"
             value={parent.lastName || ''}
-            onChange={handleParentChange}
+            onChange={handleInputChangeWithValidation}
             placeholder="Williams"
             className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
             required
@@ -74,7 +108,7 @@ export default function ParentForm({ parent, handleParentChange }) {
             type="tel"
             name="phone"
             value={parent.phone || ''}
-            onChange={handleParentChange}
+            onChange={handleInputChangeWithValidation}
             placeholder="+1234567890"
             className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
             required
@@ -103,7 +137,7 @@ export default function ParentForm({ parent, handleParentChange }) {
           <label className="block text-sm font-medium text-[#303972] mb-2">
         
           </label>
-          <PaymentOptions selected={payment} onChange={handlePaymentChange} />
+          <PaymentOptions selected={payment} onChange={handlePaymentChangeInternal} />
         </div>
       </div>
     </div>
