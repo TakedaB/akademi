@@ -55,6 +55,12 @@ export default function AddStudentPage() {
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
+  const formatToAmericanDate = (isoDate) => {
+    if (!isoDate) return '';
+    const [year, month, day] = isoDate.split('-');
+    return `${month}/${day}/${year}`;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -62,7 +68,7 @@ export default function AddStudentPage() {
     const newStudent = {
       id: generateId(),
       name: `${student.firstName} ${student.lastName}`,
-      date: new Date().toISOString().split('T')[0],
+      date: formatToAmericanDate(student.dateOfBirth),
       parentName: `${parent.firstName} ${parent.lastName}`,
       city: student.placeOfBirth || 'Jakarta',
       contact: {
