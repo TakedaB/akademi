@@ -26,7 +26,7 @@ export default function ParentForm({ parent, handleParentChange }) {
           </label>
           <input
             name="firstName"
-            value={parent.firstName}
+            value={parent.firstName || ''}
             onChange={handleParentChange}
             placeholder="Ranni"
             className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
@@ -41,7 +41,7 @@ export default function ParentForm({ parent, handleParentChange }) {
           </label>
           <input
             name="lastName"
-            value={parent.lastName}
+            value={parent.lastName || ''}
             onChange={handleParentChange}
             placeholder="Williams"
             className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
@@ -57,7 +57,7 @@ export default function ParentForm({ parent, handleParentChange }) {
           <input
             type="email"
             name="email"
-            value={parent.email}
+            value={parent.email || ''}
             onChange={handleParentChange}
             placeholder="williams@mail.com"
             className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
@@ -73,7 +73,7 @@ export default function ParentForm({ parent, handleParentChange }) {
           <input
             type="tel"
             name="phone"
-            value={parent.phone}
+            value={parent.phone || ''}
             onChange={handleParentChange}
             placeholder="+1234567890"
             className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
@@ -88,7 +88,7 @@ export default function ParentForm({ parent, handleParentChange }) {
           </label>
           <textarea
             name="address"
-            value={parent.address}
+            value={parent.address || ''}
             onChange={handleParentChange}
             rows={4}
             placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
