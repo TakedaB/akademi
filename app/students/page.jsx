@@ -6,6 +6,9 @@ import { ChevronDown, Phone, Mail } from 'lucide-react';
 export default function StudentDashboard() {
   const [selectedSort, setSelectedSort] = useState('Newest');
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const studentsPerPage = 6;
+
   const studentsData = [
     { id: '#123456788', name: 'Gideon Williams', date: '2020-03-23', parentName: 'Ranni Williams', city: 'Jakarta', contact: { phone: true, email: true }, grade: 'VII A', gradeColor: 'bg-orange-500' },
     { id: '#123456784', name: 'Miquella Soap', date: '2019-04-25', parentName: 'Marika Soap', city: 'Jakarta', contact: { phone: true, email: true }, grade: 'VII B', gradeColor: 'bg-yellow-500' },
@@ -20,6 +23,10 @@ export default function StudentDashboard() {
     const dateB = new Date(b.date);
     return selectedSort === 'Newest' ? dateB - dateA : dateA - dateB;
   });
+
+  const indexOfLastStudent = currentPage * studentsPerPage;
+  const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
+  const currentStudents = sortedStudents.slice(indexOfFirstStudent, indexOfLastStudent);
 
   return (
     <div className="flex h-screen bg-[#F5F3FF]">
@@ -65,7 +72,7 @@ export default function StudentDashboard() {
               </thead>
               
               <tbody>
-                {sortedStudents.map((student) => (
+                {currentStudents.map((student) => (
                   <tr key={student.id} className="border-b hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
@@ -103,28 +110,43 @@ export default function StudentDashboard() {
                     </td>
                   </tr>
                 ))}
-</tbody>
+            </tbody>
 
             </table>
-
             {/* Pagination */}
-            <div className="px-6 py-4 flex items-center justify-end gap-2 border-t">
-              <button className="w-8 h-8 flex items-center justify-center text-gray-400 hover:bg-gray-100 rounded-full">
-                {'<'}
-              </button>
-              <button className="w-8 h-8 flex items-center justify-center bg-indigo-600 text-white rounded-full font-medium">
-                1
-              </button>
-              <button className="w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100 rounded-full">
-                2
-              </button>
-              <button className="w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100 rounded-full">
-                3
-              </button>
-              <button className="w-8 h-8 flex items-center justify-center text-gray-400 hover:bg-gray-100 rounded-full">
-                {'>'}
-              </button>
-            </div>
+              <div className="px-6 py-4 flex items-center justify-end gap-2 border-t">
+                <button
+                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                  className="w-8 h-8 flex items-center justify-center text-gray-400 hover:bg-gray-100 rounded-full"
+                >
+                  {'<'}
+                </button>
+
+                {Array.from({ length: Math.ceil(sortedStudents.length / studentsPerPage) }, (_, i) => (
+                  <button
+                    key={i + 1}
+                    onClick={() => setCurrentPage(i + 1)}
+                    className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${
+                      currentPage === i + 1
+                        ? 'bg-indigo-600 text-white'
+                        : 'text-gray-600 hover:bg-gray-100'
+                    }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) =>
+                      Math.min(prev + 1, Math.ceil(sortedStudents.length / studentsPerPage))
+                    )
+                  }
+                  className="w-8 h-8 flex items-center justify-center text-gray-400 hover:bg-gray-100 rounded-full"
+                >
+                  {'>'}
+                </button>
+              </div>
           </div>
         </div>
       </main>
