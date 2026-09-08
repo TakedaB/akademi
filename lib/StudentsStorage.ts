@@ -2,19 +2,27 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export interface Student {
   id: string;
+  enrollment_number: string;
   name: string;
-  date: string;
-  parentName: string;
-  city: string;
-  contact: {
-    phone: string;
-    email?: string;
-  };
+  birth_date: string;
+  parent_name: string;
+  city?: string;
+  phone: string;
+  email?: string;
   grade: string;
-  gradeColor?: string;
+  created_at: string;
+  updated_at: string;
 }
 
-export type NewStudentInput = Omit<Student, "id" | "gradeColor">;
+export interface NewStudentInput {
+  name: string;
+  birth_date: string;
+  parent_name: string;
+  city?: string;
+  phone: string;
+  email?: string;
+  grade: string;
+}
 
 export async function getStudents(): Promise<Student[]> {
   const res = await fetch(`${API_URL}/students`);
