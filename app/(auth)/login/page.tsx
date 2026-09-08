@@ -72,7 +72,7 @@ export default function LoginPage() {
 
     try {
       await login(email, password);
-      router.push("/dashboard");
+      router.push("/students");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erro ao entrar");
     } finally {

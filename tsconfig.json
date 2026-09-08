@@ -18,6 +18,12 @@
     },
     "plugins": [{ "name": "next" }]
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "app/(dashboard)/students/page.jsx"
+  ],
   "exclude": ["node_modules"]
 }
