@@ -4,6 +4,7 @@ export type Role = "diretoria" | "financeiro" | "professor" | "aluno";
 
 interface JWTClaims {
   role: Role;
+  exp: number;
   [key: string]: unknown;
 }
 
@@ -22,6 +23,12 @@ function decodeJWT(token: string): JWTClaims | null {
   } catch {
     return null;
   }
+}
+
+function isExpired(claims: JWTClaims): boolean {
+  if (!claims.exp) return false;
+  const nowInSeconds = Date.now() / 1000;
+  return claims.exp < nowInSeconds;
 }
 
 export async function login(
@@ -55,10 +62,22 @@ export async function login(
 
 export function getToken(): string | null {
   if (typeof window === "undefined") return null;
-  return localStorage.getItem("akademi_token");
+
+  const token = localStorage.getItem("akademi_token");
+  if (!token) return null;
+
+  const claims = decodeJWT(token);
+  if (!claims || isExpired(claims)) {
+    logout();
+    return null;
+  }
+
+  return token;
 }
 
 export function getRole(): Role | null {
+  // getToken() já valida a expiração; se o token não for mais válido, não faz sentido devolver a role
+  if (!getToken()) return null;
   if (typeof window === "undefined") return null;
   return localStorage.getItem("akademi_role") as Role | null;
 }
