@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+import { apiFetch } from "./apiClient";
 
 export interface Student {
   id: string;
@@ -25,7 +25,7 @@ export interface NewStudentInput {
 }
 
 export async function getStudents(): Promise<Student[]> {
-  const res = await fetch(`${API_URL}/students`);
+  const res = await apiFetch("/students");
   if (!res.ok) {
     throw new Error("Erro ao buscar alunos");
   }
@@ -35,9 +35,8 @@ export async function getStudents(): Promise<Student[]> {
 export async function addStudent(
   newStudent: NewStudentInput,
 ): Promise<Student> {
-  const res = await fetch(`${API_URL}/students`, {
+  const res = await apiFetch("/students", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newStudent),
   });
 
@@ -50,7 +49,7 @@ export async function addStudent(
 }
 
 export async function deleteStudent(id: string): Promise<void> {
-  const res = await fetch(`${API_URL}/students/${id}`, {
+  const res = await apiFetch(`/students/${id}`, {
     method: "DELETE",
   });
 
