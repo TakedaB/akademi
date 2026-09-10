@@ -5,6 +5,7 @@ export interface StudentFormData {
   placeOfBirth?: string;
   parentName?: string;
   email?: string;
+  password?: string;
   phone?: string;
   address?: string;
   grade?: string;
@@ -141,6 +142,21 @@ export default function StudentForm({ student, onChange }: StudentFormProps) {
             type="email"
             className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
             placeholder="williams@mail.com"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-[#303972] mb-2">
+            Senha inicial *
+          </label>
+          <input
+            name="password"
+            value={student.password || ""}
+            onChange={handleInputChange}
+            type="password"
+            className="w-full border border-[#E0E0E0] rounded-lg p-3 text-[#303972] focus:outline-none focus:ring-2 focus:ring-[#A098AE]"
+            placeholder="Defina uma senha temporária"
             required
           />
         </div>

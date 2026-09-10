@@ -16,14 +16,14 @@ export interface Student {
 
 export interface NewStudentInput {
   name: string;
+  email: string;
+  password: string;
   birth_date: string;
   parent_name: string;
   city?: string;
   phone: string;
-  email?: string;
   grade: string;
 }
-
 export async function getStudents(): Promise<Student[]> {
   const res = await apiFetch("/students");
   if (!res.ok) {

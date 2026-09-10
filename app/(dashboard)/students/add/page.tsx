@@ -54,11 +54,12 @@ export default function AddStudentPage() {
 
     const newStudent: NewStudentInput = {
       name: `${student.firstName} ${student.lastName}`,
+      email: student.email || "",
+      password: student.password || "",
       birth_date: student.dateOfBirth ? `${student.dateOfBirth}T00:00:00Z` : "",
       parent_name: `${parent.firstName} ${parent.lastName}`,
       city: student.placeOfBirth || undefined,
       phone: student.phone || "",
-      email: student.email || undefined,
       grade: student.grade || "VII A",
     };
 

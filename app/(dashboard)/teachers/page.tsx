@@ -3,16 +3,18 @@
 import { useEffect, useState } from "react";
 import { Phone, Mail, Trash2 } from "lucide-react";
 import { getTeachers, deleteTeacher, Teacher } from "@/lib/TeachersStorage";
-import { getRole } from "@/lib/auth";
+import { getRole, Role } from "@/lib/auth";
 
 export default function TeachersPage() {
   const [teachers, setTeachers] = useState<Teacher[]>([]);
   const [loading, setLoading] = useState(true);
+  const [role, setRole] = useState<string | null>(null);
   const [canManage, setCanManage] = useState(false);
 
   useEffect(() => {
-    const role = getRole();
-    setCanManage(role === "diretoria");
+    const currentRole = getRole();
+    setRole(currentRole);
+    setCanManage(currentRole === "diretoria");
     loadTeachers();
   }, []);
 
@@ -74,9 +76,11 @@ export default function TeachersPage() {
                   <th className="px-6 py-4 text-left text-sm font-semibold text-[#303972]">
                     Class
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-[#303972]">
-                    Workload
-                  </th>
+                  {role !== "aluno" && (
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-[#303972]">
+                      Workload
+                    </th>
+                  )}
                   <th className="px-6 py-4 text-left text-sm font-semibold text-[#303972]">
                     Contact
                   </th>
@@ -91,7 +95,7 @@ export default function TeachersPage() {
                 {teachers.length === 0 ? (
                   <tr>
                     <td
-                      colSpan={canManage ? 6 : 5}
+                      colSpan={canManage ? 6 : role === "aluno" ? 4 : 5}
                       className="text-center py-6 text-gray-400"
                     >
                       No teachers registered yet.
@@ -119,9 +123,11 @@ export default function TeachersPage() {
                       <td className="px-6 py-4 text-sm text-[#303972]">
                         {teacher.class_assigned}
                       </td>
-                      <td className="px-6 py-4 text-sm text-[#303972]">
-                        {teacher.workload_hours}h
-                      </td>
+                      {role !== "aluno" && (
+                        <td className="px-6 py-4 text-sm text-[#303972]">
+                          {teacher.workload_hours}h
+                        </td>
+                      )}
                       <td className="px-6 py-4">
                         <div className="flex gap-2">
                           {teacher.phone && (
