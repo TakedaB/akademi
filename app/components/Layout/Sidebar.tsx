@@ -28,7 +28,7 @@ const menuItems: MenuItem[] = [
   {
     name: "Dashboard",
     icon: DashboardIcon,
-    path: "/students",
+    path: "/dashboard",
     allowedRoles: ALL_ROLES,
   },
   {

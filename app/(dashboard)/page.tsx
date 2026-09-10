@@ -9,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     const token = getToken();
-    router.replace(token ? "/students" : "/login");
+    router.replace(token ? "/dashboard" : "/login");
   }, [router]);
 
   return null;
