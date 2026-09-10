@@ -76,42 +76,40 @@ export default function Sidebar() {
     : [];
 
   return (
-    <aside className="bg-[#4D44B5] text-[#C1BBEB] w-60 min-h-screen p-6 flex flex-col justify-between">
-      <div>
-        <Logo />
+    <aside className="bg-[#4D44B5] text-[#C1BBEB] w-60 h-screen sticky top-0 p-6 flex flex-col overflow-y-auto">
+      <Logo />
 
-        <nav className="mt-8 flex flex-col gap-4">
-          {visibleItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = pathname === item.path;
+      <nav className="mt-8 flex flex-col gap-4">
+        {visibleItems.map((item) => {
+          const Icon = item.icon;
+          const isActive = pathname === item.path;
 
-            return (
-              <Link key={item.path} href={item.path}>
-                <div
-                  className={`group flex items-center gap-3 p-3 rounded-lg transition-all ${
+          return (
+            <Link key={item.path} href={item.path}>
+              <div
+                className={`group flex items-center gap-3 p-3 rounded-lg transition-all ${
+                  isActive
+                    ? "bg-white text-[#4D44B5] font-semibold"
+                    : "hover:bg-[#C1BBEB]"
+                }`}
+              >
+                <Icon
+                  className={`w-5 h-5 ${
                     isActive
-                      ? "bg-white text-[#4D44B5] font-semibold"
-                      : "hover:bg-[#C1BBEB]"
+                      ? "text-[#4F46E5]"
+                      : "text-white group-hover:text-white"
                   }`}
-                >
-                  <Icon
-                    className={`w-5 h-5 ${
-                      isActive
-                        ? "text-[#4F46E5]"
-                        : "text-white group-hover:text-white"
-                    }`}
-                  />
-                  <span>{item.name}</span>
-                </div>
-              </Link>
-            );
-          })}
-        </nav>
-      </div>
+                />
+                <span>{item.name}</span>
+              </div>
+            </Link>
+          );
+        })}
+      </nav>
 
       <button
         onClick={handleLogout}
-        className="flex items-center gap-3 p-3 rounded-lg text-[#C1BBEB] hover:bg-[#C1BBEB] hover:text-[#4D44B5] transition-all"
+        className="mt-auto flex items-center gap-3 p-3 rounded-lg text-[#C1BBEB] hover:bg-[#C1BBEB] hover:text-[#4D44B5] transition-all shrink-0"
       >
         <LogOut className="w-5 h-5" />
         <span>Sair</span>
